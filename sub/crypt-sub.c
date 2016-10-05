@@ -1,17 +1,18 @@
 /*
  *  @author   : Rajan Khullar
  *  @author   : Shawn Hu
- *  @created  : 10/05/16
+ *  @created  : 10/04/16
  *  @updated  : 10/05/16
  */
 
 #include "crypt-sub.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
 
-extern const char* gen()
+extern const char* gen(void)
 {
     char *key = seed();
     unsigned int i, j;
@@ -24,6 +25,16 @@ extern const char* gen()
     return key;
 }
 
+extern const char* cat(const char* path)
+{
+    int c;
+    FILE *file = fopen(path, "r");
+    if(file)
+        while((c = fgetc(file)) != EOF)
+            putchar(c);
+        fclose(file);
+}
+
 static char* seed(void)
 {
     char *str = (char*) malloc (N*sizeof(char));
@@ -31,7 +42,7 @@ static char* seed(void)
     return str;
 }
 
-static void swap(char* a, unsigned int i, unsigned int j)
+static void swap(char *a, unsigned int i, unsigned int j)
 {
     char t = a[i];
     a[i] = a[j];

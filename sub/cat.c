@@ -10,13 +10,12 @@
 #include <string.h>
 #include "crypt-sub.h"
 
-int main(void)
+int main(int argc, char *argv[])
 {
-    const char *key = gen();
-    //printf("%s\n", key);
-    FILE *fp = fopen("key.txt", "w");
-    fprintf(fp, "%s\n", key);
-    fclose(fp);
-    free((void*) key);
+    if(argc < 2)
+        return 1;
+    const char* path = argv[1];
+    printf("%s\n", path);
+    cat(path);
     return 0;
 }
