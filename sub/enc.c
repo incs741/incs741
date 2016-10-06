@@ -1,6 +1,6 @@
 /*
  *  @author   : Rajan Khullar
- *  @created  : 10/04/16
+ *  @created  : 10/05/16
  *  @updated  : 10/05/16
  */
 
@@ -14,7 +14,15 @@ int main(int argc, char *argv[])
     if(argc < 2)
         return 1;
     const char *path = argv[1];
+    const char *key = read_key("key.txt");
     printf("%s\n", path);
-    cat(path);
+    FILE *fi = fopen(path, "r");
+    FILE *fo = fopen("ciphertext.txt", "w");
+    if(fi && fo)
+    {
+        fclose(fi);
+        fclose(fo);
+    }
+    free((void*) key);
     return 0;
 }

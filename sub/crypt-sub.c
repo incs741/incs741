@@ -25,14 +25,28 @@ extern const char* gen(void)
     return key;
 }
 
-extern const char* cat(const char* path)
+extern void cat(const char* path)
 {
     int c;
     FILE *file = fopen(path, "r");
     if(file)
+    {
         while((c = fgetc(file)) != EOF)
             putchar(c);
         fclose(file);
+    }
+}
+
+extern const char* read_key(const char* path)
+{
+    char *str = (char*) malloc (N*sizeof(char));
+    FILE *file = fopen(path, "r");
+    if(file)
+    {
+        fgets(str, N+1, file);
+        fclose(file);
+    }
+    return str;
 }
 
 static char* seed(void)

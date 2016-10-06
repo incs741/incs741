@@ -2,7 +2,7 @@
  *  @author   : Rajan Khullar
  *  @author   : Shawn Hu
  *  @created  : 10/04/16
- *  @updated  : 10/04/16
+ *  @updated  : 10/05/16
  */
 
 #ifndef CRYPT_SUB_H
@@ -13,7 +13,8 @@
 extern const char* gen(void);
 extern const char* enc(const char* key, const char* ptex);
 extern const char* dec(const char* key, const char* ctex);
-extern const char* cat(const char* path);
+extern void cat(const char* path);
+extern const char* read_key(const char* path);
 
 /* support functions */
 static char* seed(void);

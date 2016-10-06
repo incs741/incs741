@@ -2,7 +2,7 @@
  *  @author   : Rajan Khullar
  *  @author   : Shawn Hu
  *  @created  : 10/04/16
- *  @updated  : 10/04/16
+ *  @updated  : 10/05/16
  */
 
 #include <stdio.h>
@@ -10,13 +10,13 @@
 #include <string.h>
 #include "crypt-sub.h"
 
-int main(void)
+int main(int argc, char *argv[])
 {
     const char *key = gen();
-    //printf("%s\n", key);
-    FILE *fp = fopen("key.txt", "w");
-    fprintf(fp, "%s\n", key);
-    fclose(fp);
+    printf("%s\n", key);
+    FILE *file = fopen("key.txt", "w");
+    fprintf(file, "%s\n", key);
+    fclose(file);
     free((void*) key);
     return 0;
 }
