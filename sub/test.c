@@ -11,5 +11,8 @@
 
 int main(int argc, char *argv[])
 {
+    char *key = (char*) read_key(key_sub);
+    printf("%s\n", key);
+    free(key);
     return 0;
 }

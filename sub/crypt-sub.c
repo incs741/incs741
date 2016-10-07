@@ -2,7 +2,7 @@
  *  @author   : Rajan Khullar
  *  @author   : Shawn Hu
  *  @created  : 10/04/16
- *  @updated  : 10/06/16
+ *  @updated  : 10/07/16
  */
 
 #include "macros.h"
@@ -40,7 +40,7 @@ extern void cat(const char* path)
 
 extern const char* read_key(const char* path)
 {
-    char *str = (char*) malloc (langN*sizeof(char));
+    char *str = (char*) malloc ((langN+1)*sizeof(char));
     FILE *file = fopen(path, "r");
     if(file)
     {
@@ -52,8 +52,11 @@ extern const char* read_key(const char* path)
 
 static char* seed(void)
 {
-    char *str = (char*) malloc (langN*sizeof(char));
-    strcpy(str, "abcdefghijklmnopqrstuvwxyz");
+    char *str = (char*) malloc((langN+1)*sizeof(char));
+    unsigned int x, c = (unsigned int) 'a';
+    for(x = 0; x < langN; x++)
+        str[x] = c++;
+    str[langN] = '\0';
     return str;
 }
 

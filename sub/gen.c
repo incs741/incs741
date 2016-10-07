@@ -2,7 +2,7 @@
  *  @author   : Rajan Khullar
  *  @author   : Shawn Hu
  *  @created  : 10/04/16
- *  @updated  : 10/05/16
+ *  @updated  : 10/07/16
  */
 
 #include <stdio.h>
@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 {
     const char *key = gen();
     printf("%s\n", key);
-    FILE *file = fopen("key.txt", "w");
+    FILE *file = fopen(key_sub, "w");
     fprintf(file, "%s\n", key);
     fclose(file);
     free((void*) key);
