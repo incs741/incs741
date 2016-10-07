@@ -1,22 +1,26 @@
+#author  : Rajan Khullar
+#created : 10/06/16
+#updated : 10/06/16
+
+CC      = gcc
+BINS    = gen enc dec cat test
+DEPS    = crypt-sub.h macros.h
+OBJS    = crypt-sub.o
+CFLAGS  =
+
+SFX     = exe
+EXES    = $(addsuffix .$(SFX), $(BINS))
+
 default: clean compile
 
 clean:
-	@rm -rf gen enc dec *.o *.h.gch *~
+	@rm -rf $(BINS) *.$(SFX) *.o *.h.gch *~
 
-compile: crypt-sub.c gen.c cat.c
-	gcc -c crypt-sub.c -o crypt-sub.o
-	gcc -c gen.c -o gen.o
-	gcc -c cat.c -o cat.o
-	gcc -c enc.c -o enc.o
-	gcc gen.o crypt-sub.o -o gen
-	gcc cat.o crypt-sub.o -o cat
-	gcc enc.o crypt-sub.o -o enc
+%.o: %.c $(DEPS)
+	$(CC) -c $< $(CFLAGS) -o $@
 
-gen: default
-	./gen
+%.$(SFX): %.o $(OBJS)
+	$(CC) $^ $(CFLAGS) -o $@
+	@mv $@ $(@:.$(SFX)=)
 
-cat: default
-	./cat key.txt
-
-enc: default
-	./enc secret.txt
+compile: $(EXES)

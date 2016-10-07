@@ -2,9 +2,10 @@
  *  @author   : Rajan Khullar
  *  @author   : Shawn Hu
  *  @created  : 10/04/16
- *  @updated  : 10/05/16
+ *  @updated  : 10/06/16
  */
 
+#include "macros.h"
 #include "crypt-sub.h"
 
 #include <stdio.h>
@@ -17,9 +18,9 @@ extern const char* gen(void)
     char *key = seed();
     unsigned int i, j;
     srand(time(NULL));
-    for(i = 0; i < N; i++)
+    for(i = 0; i < langN; i++)
     {
-        j = rand() % N;
+        j = rand() % langN;
         swap(key, i, j);
     }
     return key;
@@ -39,11 +40,11 @@ extern void cat(const char* path)
 
 extern const char* read_key(const char* path)
 {
-    char *str = (char*) malloc (N*sizeof(char));
+    char *str = (char*) malloc (langN*sizeof(char));
     FILE *file = fopen(path, "r");
     if(file)
     {
-        fgets(str, N+1, file);
+        fgets(str, langN+1, file);
         fclose(file);
     }
     return str;
@@ -51,7 +52,7 @@ extern const char* read_key(const char* path)
 
 static char* seed(void)
 {
-    char *str = (char*) malloc (N*sizeof(char));
+    char *str = (char*) malloc (langN*sizeof(char));
     strcpy(str, "abcdefghijklmnopqrstuvwxyz");
     return str;
 }

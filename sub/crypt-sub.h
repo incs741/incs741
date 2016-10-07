@@ -2,12 +2,13 @@
  *  @author   : Rajan Khullar
  *  @author   : Shawn Hu
  *  @created  : 10/04/16
- *  @updated  : 10/05/16
+ *  @updated  : 10/06/16
  */
+
+#include "macros.h"
 
 #ifndef CRYPT_SUB_H
 #define CRYPT_SUB_H
-#define N 26
 
 /* primary functions */
 extern const char* gen(void);
