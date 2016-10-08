@@ -48,10 +48,11 @@ int main(int argc, char *argv[])
         if(o > -1)
             fputc(key[o], fo);
     }
-    printf("%c", '\n');
+    fputc('\n', fo);
 
     fclose(fi);
     fclose(fo);
     free(key);
+    
     return 0;
 }

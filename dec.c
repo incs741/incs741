@@ -1,7 +1,7 @@
 /*
  *  @author   : Rajan Khullar
- *  @created  : 10/XX/16
- *  @updated  : 10/XX/16
+ *  @created  : 10/08/16
+ *  @updated  : 10/08/16
  */
 
 #include <stdio.h>
@@ -34,8 +34,25 @@ int main(int argc, char *argv[])
     char *key = (char*) rkey(key_sub);
     key = (char*) ikey(key);
 
-    printf("%s\n", key);
-    
+    FILE *fi = fopen(path, "r"), *fo = fopen(ptex_sub, "w");
+    if(fi == NULL || fo == NULL)
+    {
+        printf("there has been an error\n");
+        free(key);
+        return -1;
+    }
+
+    int c, o;
+    while((c = fgetc(fi)) != EOF)
+    {
+        o = filter((char) c);
+        if(o > -1)
+            fputc(key[o], fo);
+    }
+    fputc('\n', fo);
+
+    fclose(fi);
+    fclose(fo);
     free(key);
 
     return 0;
