@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     const char *path = argv[1];
     if(!exists(path))
     {
-        printf("cannot find %s\n", key_sub);
+        printf("cannot find %s\n", path);
         return -1;
     }
     cat(path);
