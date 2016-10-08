@@ -62,6 +62,21 @@ extern const char* rkey(const char* path)
     return str;
 }
 
+extern const char* ikey(const char* key)
+{
+    char *str = (char*) malloc((langN+1)*sizeof(char));
+    int i, j; char c;
+    for(i = 0; i < langN; i++)
+    {
+        c = 'a' + i;
+        j = find(key, c);
+        if(j > -1)
+            str[i] = 'a' + j;
+    }
+    str[langN] = '\0';
+    return str;
+}
+
 extern int filter(char c)
 {
     if('a' <= c && c <= 'z')
@@ -86,4 +101,16 @@ static void swap(char *a, unsigned int i, unsigned int j)
     char t = a[i];
     a[i] = a[j];
     a[j] = t;
+}
+
+static int find(const char *str, char c)
+{
+    int x = 0;
+    while(*str)
+    {
+        if(c == *str++)
+            return x;
+        x++;
+    }
+    return -1;
 }

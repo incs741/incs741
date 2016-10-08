@@ -18,10 +18,12 @@ extern const char* gen(void);
 extern void cat(const char* path);
 extern bool exists(const char* path);
 extern const char* rkey(const char* path);
+extern const char* ikey(const char* key);
 extern int filter(char c);
 
 /* support functions */
 static char* seed(void);
 static void swap(char* a, unsigned int i, unsigned int j);
+static int find(const char *str, char c);
 
 #endif // LINKED_LIST_H
