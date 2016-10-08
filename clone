@@ -1,0 +1,14 @@
+#!/bin/bash
+
+remote=git@github.com:incs741/project01.git
+list=(sub otp)
+
+x=0
+while [ "x${list[x]}" != "x" ]
+do
+    branch=${list[$x]}
+    rm -rf ../$branch
+    git clone -b $branch $remote ../$branch
+    x=$(( $x + 1 ))
+done
+
