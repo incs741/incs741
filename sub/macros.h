@@ -2,7 +2,6 @@
 #define MACROS_H
 
 #define langN       26
-
 #define block_size  512
 
 #define key_name    "key"
