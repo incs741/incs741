@@ -62,6 +62,15 @@ extern const char* rkey(const char* path)
     return str;
 }
 
+extern int filter(char c)
+{
+    if('a' <= c && c <= 'z')
+        return (int) c - (int) 'a';
+    if('A' <= c && c <= 'Z')
+        return (int) c - (int) 'A';
+    return -1;
+}
+
 static char* seed(void)
 {
     char *str = (char*) malloc((langN+1)*sizeof(char));
@@ -77,13 +86,4 @@ static void swap(char *a, unsigned int i, unsigned int j)
     char t = a[i];
     a[i] = a[j];
     a[j] = t;
-}
-
-static int filter(char c)
-{
-    if('a' <= c && c <= 'z')
-        return (int) c - (int) 'a';
-    if('A' <= c && c <= 'Z')
-        return (int) c - (int) 'A';
-    return -1;
 }

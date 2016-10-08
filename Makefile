@@ -14,7 +14,7 @@ EXES    = $(addsuffix .$(SFX), $(BINS))
 default: clean compile
 
 clean:
-	@rm -rf $(BINS) *.$(SFX) *.o *.h.gch *~ *.txt
+	@rm -rf $(BINS) *.$(SFX) *.o *.h.gch *~ *.txt *.dat
 
 %.o: %.c $(DEPS)
 	$(CC) -c $< $(CFLAGS) -o $@
