@@ -2,7 +2,7 @@
  *  @author   : Rajan Khullar
  *  @author   : Shawn Hu
  *  @created  : 10/04/16
- *  @updated  : 10/09/16
+ *  @updated  : 10/10/16
  */
 
 #include "support.h"
@@ -47,6 +47,8 @@ int main(int argc, char *argv[])
 {
     if(mode == modeG)
         return gen();
+    if(argc < 2)
+        return -1;
     const char *path = argv[1];
     if(!exists(path))
         return -1;
