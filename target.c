@@ -14,7 +14,6 @@ int enc(const char *path, const char *key, const char *out)
     fk = fopen(key , "r"); if(fk == NULL) return -1; ck = 0;
     fi = fopen(path, "r"); if(fi == NULL) return -1; ci = 0;
     fo = fopen(out , "w"); if(fo == NULL) return -1; co = 0;
-    unsigned int n = 0;
     while(true)
     {
         ci = fgetc(fi);
@@ -23,10 +22,8 @@ int enc(const char *path, const char *key, const char *out)
             break;
         co = ci^ck;
         fputc(co, fo);
-        n++;
     }
     fclose(fi); fclose(fk); fclose(fo);
-    printf("%d\n", n);
     return 0;
 }
 
